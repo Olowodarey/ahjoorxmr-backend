@@ -14,13 +14,15 @@ import { Contribution } from '../contributions/entities/contribution.entity';
 import { Group } from '../groups/entities/group.entity';
 import { Membership } from '../memberships/entities/membership.entity';
 import { NotificationsService } from '../notification/notifications.service';
-import { Notification } from '../notification/notification.entity';
+import { GroupsModule } from '../groups/groups.module';
+import { NotificationsModule } from '../notification/notifications.module';
 
 @Module({
   imports: [
     ScheduleModule.forRoot(),
-    ConfigModule,
-    TypeOrmModule.forFeature([AuditLog, Contribution, Group, Membership, Notification]),
+    TypeOrmModule.forFeature([AuditLog, Contribution, Group, Membership]),
+    GroupsModule,
+    NotificationsModule,
   ],
   providers: [
     SchedulerService,
